@@ -1,24 +1,7 @@
-# README
+# Budgit
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technologies: Ruby on Rails
 
-Things you may want to cover:
+This is an application built to enable a user to login and track monthly financial expenditures.
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
