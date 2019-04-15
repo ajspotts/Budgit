@@ -1,0 +1,9 @@
+<div class = "container">
+<h1>Welcome to Budgit!</h1>
+<%= link_to "Create an account", new_user_path %>
+<ul>
+  <% @users.each do |user| %>
+      <li><%= link_to user.email, user_path(user) %></li>
+  <% end %>
+</ul>
+</div>

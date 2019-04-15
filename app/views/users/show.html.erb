@@ -1,0 +1,33 @@
+<h1 id= 'test'><%= @user.email %></h1>
+<h3><%=link_to "Sign Out", new_user_path %></h3>
+<h2>Your remaining budget is currently at $<%= number_with_precision (@user.total_funds - @user.accounts.map(&:spent_funds).inject(0, &:+)), :precision => 2 %></h2>
+<% if @user.accounts.any? %>
+  <h2>Enter your expense</h2>
+  <% @user.accounts.sort_by{|acc| acc.name }.each do |account| %>
+  <%= form_tag('/accounts/update', :method => :put) do %>
+    <%= text_field_tag 'Account' %>
+    <%= hidden_field_tag 'account_id', account.id %>
+    <%= hidden_field_tag 'user_id', @user.id %>
+    <%= submit_tag "Update" %>
+  <% end %>
+    <div><%= account.name %>: $<%= number_with_precision account.remaining_funds, :precision => 2 %></div>
+  <% end %>
+<% else %>
+  <h2>Create your budget</h2>
+  <%= form_tag('/users/update', :method => :put) do %>
+      <%= label_tag 'Transportation' %><br>
+      <%= text_field_tag 'Transportation' %><br>
+      <%= label_tag 'Groceries' %><br>
+      <%= text_field_tag 'Groceries' %><br>
+      <%= label_tag 'Bills' %><br>
+      <%= text_field_tag 'Bills' %><br>
+      <%= label_tag 'Entertainment' %><br>
+      <%= text_field_tag 'Entertainment' %><br>
+      <%= label_tag 'Dining Out' %><br>
+      <%= text_field_tag 'Dining Out' %><br>
+      <%= label_tag 'Shopping' %><br>
+      <%= text_field_tag 'Shopping' %><br>
+      <%= hidden_field_tag 'user_id', @user.id %>
+      <%= submit_tag "Submit" %>
+  <% end %>
+<% end %>

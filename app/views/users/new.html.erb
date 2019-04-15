@@ -1,0 +1,12 @@
+<h1>New User</h1>
+<%= form_for @user do |f| %>
+  <%= f.label "Please enter your email address" %>
+  <%= f.text_field :email %> <br>
+  <%= f.label "Create a password" %>
+  <%= f.password_field :password %> <br>
+  <%= f.label "Confirm your password" %>
+  <%= f.password_field :password_confirmation %> <br>
+  <%= f.label "Enter your estimated monthly budget" %>
+  <%= f.text_field :total_funds %> <br>
+  <%= f.submit %>
+<% end %>
